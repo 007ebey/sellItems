@@ -33,7 +33,7 @@ const categories = [
   {
     id: 'wedding',
     title: 'Wedding Hampers',
-    subtitle: 'Gifting for life's biggest day',
+    subtitle: "Gifting for life's biggest day",
     image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80',
     color: 'from-pink-900',
   },
