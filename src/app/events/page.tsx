@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Star, Users, Zap } from 'lucide-react';
-import QuoteForm from '@/components/ui/QuoteForm';
+import { QuoteForm } from '@/components/ui/QuoteForm';
 
 const services = [
   {

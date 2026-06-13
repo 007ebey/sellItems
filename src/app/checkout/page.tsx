@@ -27,6 +27,8 @@ type Address = {
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, subtotal, total, clearCart } = useCartStore();
+  const sub = subtotal();
+  const tot = total();
   const [step, setStep] = useState<'address' | 'payment'>('address');
   const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState<Address>({
@@ -63,7 +65,7 @@ export default function CheckoutPage() {
       const res = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: total }),
+        body: JSON.stringify({ amount: tot }),
       });
       const order = await res.json();
 
@@ -212,14 +214,14 @@ export default function CheckoutPage() {
 
                 <div className="space-y-3 py-5 border-t border-b border-gray-100 mb-6">
                   <div className="flex justify-between text-sm text-gray-600">
-                    <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
+                    <span>Subtotal</span><span>{formatPrice(sub)}</span>
                   </div>
                   <div className="flex justify-between text-sm text-gray-600">
                     <span>Shipping</span>
-                    <span className={subtotal >= 1499 ? 'text-green-600 font-medium' : ''}>{subtotal >= 1499 ? 'FREE' : formatPrice(199)}</span>
+                    <span className={sub >= 1499 ? 'text-green-600 font-medium' : ''}>{sub >= 1499 ? 'FREE' : formatPrice(199)}</span>
                   </div>
                   <div className="flex justify-between font-bold text-charcoal text-lg pt-2">
-                    <span>Total</span><span className="price-tag">{formatPrice(total)}</span>
+                    <span>Total</span><span className="price-tag">{formatPrice(tot)}</span>
                   </div>
                 </div>
 
@@ -234,7 +236,7 @@ export default function CheckoutPage() {
                   className="btn-gold w-full py-4 text-base flex items-center justify-center gap-2"
                 >
                   <Lock className="w-4 h-4" />
-                  {loading ? 'Processing...' : `Pay ${formatPrice(total)} Securely`}
+                  {loading ? 'Processing...' : `Pay ${formatPrice(tot)} Securely`}
                 </button>
 
                 <button onClick={() => setStep('address')} className="w-full text-center text-gray-500 text-sm mt-4 hover:text-gray-700">
@@ -258,14 +260,14 @@ export default function CheckoutPage() {
               </div>
               <div className="border-t pt-4 space-y-2 text-sm">
                 <div className="flex justify-between text-gray-500">
-                  <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
+                  <span>Subtotal</span><span>{formatPrice(sub)}</span>
                 </div>
                 <div className="flex justify-between text-gray-500">
                   <span>Shipping</span>
-                  <span>{subtotal >= 1499 ? 'FREE' : formatPrice(199)}</span>
+                  <span>{sub >= 1499 ? 'FREE' : formatPrice(199)}</span>
                 </div>
                 <div className="flex justify-between font-bold text-charcoal text-base pt-1 border-t">
-                  <span>Total</span><span>{formatPrice(total)}</span>
+                  <span>Total</span><span>{formatPrice(tot)}</span>
                 </div>
               </div>
               <div className="mt-5 flex items-center gap-2 text-xs text-gray-400">
