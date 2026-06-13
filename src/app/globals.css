@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --purple: #4a235a;
+  --purple-light: #7d2d9e;
+  --gold: #d4af37;
+  --gold-light: #f0d060;
+  --gold-champagne: #f7e7ce;
+  --cream: #fbf8f3;
+  --off-white: #f5f0eb;
+  --charcoal: #1c1c1e;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: white;
+  color: var(--charcoal);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--charcoal);
+}
+
+/* ── Typography ────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-cormorant);
+}
+.font-accent {
+  font-family: var(--font-cinzel);
+}
+
+/* ── Gold text shimmer ─────────────────────────────────────────────── */
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #d4af37, #f0d060, #a88920, #f0d060, #d4af37);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Luxury divider ────────────────────────────────────────────────── */
+.luxury-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.luxury-divider::before,
+.luxury-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* ── Section heading ───────────────────────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-heading {
+  font-family: var(--font-cormorant);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+/* ── Luxury card ───────────────────────────────────────────────────── */
+.luxury-card {
+  background: white;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.luxury-card:hover {
+  box-shadow: 0 30px 80px rgba(74, 35, 90, 0.18), 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  background: linear-gradient(135deg, #d4af37 0%, #f0d060 50%, #a88920 100%);
+  color: #1c1c1e;
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.55);
+  filter: brightness(1.05);
+}
+
+.btn-purple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  background: var(--purple);
+  color: white;
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-purple:hover {
+  background: var(--purple-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(74, 35, 90, 0.4);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.825rem 2.25rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+}
+
+/* ── Hero pattern overlay ──────────────────────────────────────────── */
+.hero-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 35, 90, 0.1) 0%, transparent 50%);
+}
+
+/* ── Image shine effect ────────────────────────────────────────────── */
+.img-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.6s;
+}
+
+.img-shine:hover::after {
+  left: 150%;
+}
+
+/* ── Marquee wrapper ───────────────────────────────────────────────── */
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 35s linear infinite;
+}
+
+/* ── Animations for opacity reveal ────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Form inputs ───────────────────────────────────────────────────── */
+.luxury-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(74, 35, 90, 0.2);
+  background: white;
+  color: var(--charcoal);
+  font-family: var(--font-jost);
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  outline: none;
+  border-radius: 0;
+}
+
+.luxury-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.luxury-input::placeholder {
+  color: rgba(28, 28, 30, 0.4);
+}
+
+/* ── Price tag ─────────────────────────────────────────────────────── */
+.price-tag {
+  font-family: var(--font-cormorant);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+/* ── Star rating ───────────────────────────────────────────────────── */
+.star-filled {
+  color: var(--gold);
+}
+.star-empty {
+  color: rgba(212, 175, 55, 0.3);
+}
+
+/* ── Overlay text ──────────────────────────────────────────────────── */
+.text-shadow-luxury {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Badge ─────────────────────────────────────────────────────────── */
+.badge-gold {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  background: linear-gradient(135deg, #d4af37, #f0d060);
+  color: #1c1c1e;
+  font-family: var(--font-cinzel);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Noise texture overlay ─────────────────────────────────────────── */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Responsive video container ────────────────────────────────────── */
+.aspect-video-box {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* ── Loading skeleton ──────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Page transition ───────────────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
